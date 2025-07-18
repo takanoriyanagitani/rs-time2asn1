@@ -1,0 +1,91 @@
+BasicTime DEFINITIONS IMPLICIT TAGS ::= BEGIN
+
+  -- expected size in der: 11
+  Time ::= SEQUENCE {
+    hours   INTEGER (0..23),
+    minutes INTEGER (0..59),
+    seconds INTEGER (0..59)
+  }
+
+  -- expected size in der: 5
+  RawCompactTimeD ::= INTEGER (0..86399) -- seconds from midnight
+
+  -- expected size in der: 4
+  RawCompactTimeCoarseM ::= INTEGER (0..43199) -- 0.5 seconds from midnight
+
+  -- expected size in der: 4
+  RawCompactTimeCoarseS ::= INTEGER (0..1439) -- minutes from midnight
+
+  -- expected size in der: 4
+  RawCompactTimeH ::= CHOICE {
+    h0  [0] INTEGER (0..3599), -- minutes * 60 + seconds
+    h1  [1] INTEGER (0..3599),
+    h2  [2] INTEGER (0..3599),
+    h3  [3] INTEGER (0..3599),
+    h4  [4] INTEGER (0..3599),
+    h5  [5] INTEGER (0..3599),
+    h6  [6] INTEGER (0..3599),
+    h7  [7] INTEGER (0..3599),
+    h8  [8] INTEGER (0..3599),
+    h9  [9] INTEGER (0..3599),
+    h10 [10] INTEGER (0..3599),
+    h11 [11] INTEGER (0..3599),
+    h12 [12] INTEGER (0..3599),
+    h13 [13] INTEGER (0..3599),
+    h14 [14] INTEGER (0..3599),
+    h15 [15] INTEGER (0..3599),
+    h16 [16] INTEGER (0..3599),
+    h17 [17] INTEGER (0..3599),
+    h18 [18] INTEGER (0..3599),
+    h19 [19] INTEGER (0..3599),
+    h20 [20] INTEGER (0..3599),
+    h21 [21] INTEGER (0..3599),
+    h22 [22] INTEGER (0..3599),
+    h23 [23] INTEGER (0..3599)
+  }
+
+  -- expected size in der: 3
+  CompactTimeCoarse ::= CHOICE {
+    h0  [0] INTEGER (0..59),
+    h1  [1] INTEGER (0..59),
+    h2  [2] INTEGER (0..59),
+    h3  [3] INTEGER (0..59),
+    h4  [4] INTEGER (0..59),
+    h5  [5] INTEGER (0..59),
+    h6  [6] INTEGER (0..59),
+    h7  [7] INTEGER (0..59),
+    h8  [8] INTEGER (0..59),
+    h9  [9] INTEGER (0..59),
+    h10 [10] INTEGER (0..59),
+    h11 [11] INTEGER (0..59),
+    h12 [12] INTEGER (0..59),
+    h13 [13] INTEGER (0..59),
+    h14 [14] INTEGER (0..59),
+    h15 [15] INTEGER (0..59),
+    h16 [16] INTEGER (0..59),
+    h17 [17] INTEGER (0..59),
+    h18 [18] INTEGER (0..59),
+    h19 [19] INTEGER (0..59),
+    h20 [20] INTEGER (0..59),
+    h21 [21] INTEGER (0..59),
+    h22 [22] INTEGER (0..59),
+    h23 [23] INTEGER (0..59)
+  }
+
+  -- expected size in der: 6
+  RawDosDateTime ::= OCTET STRING -- 32-bit integer
+
+  -- expected size in der: 4
+  RawDosTime ::= OCTET STRING -- 16-bit integer
+
+  -- expected size in der: 3
+  SecondsInfo ::= INTEGER (0..29) -- Second divided by 2
+
+  -- expected size in der: 11
+  DosTime ::= SEQUENCE {
+    hours   INTEGER (0..23),
+    minutes INTEGER (0..59),
+    sinfo   SecondsInfo
+  }
+
+END
